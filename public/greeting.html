@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>greeting</title>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+<div id="disp"></div>
+
+<script>
+ReactDOM.render(
+  const root = document.querySelector('#disp')
+  const msg = getGreeting()
+  ReactDOM.render(mag, root)
+  // 挨拶を返す関数
+  function getGreeting () {
+    // ランダムな値を得る
+    const r = Math.floor(Math.random() * 3)
+    // 値に応じてメッセージを返す
+    if (r == 0) return <p>今日も頑張りましょう。</p>
+    if (r == 1) return <p>こんにちは。</p>
+    if (r == 2) return <p>朗らかな日ですね。</p>
+  }
+)
+
+</script>
+
