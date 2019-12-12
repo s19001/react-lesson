@@ -8,11 +8,10 @@
 
 <div id="disp"></div>
 
-<script>
-ReactDOM.render(
+<script type="text/babel">
   const root = document.querySelector('#disp')
   const msg = getGreeting()
-  ReactDOM.render(mag, root)
+  ReactDOM.render(msg, root)
   // 挨拶を返す関数
   function getGreeting () {
     // ランダムな値を得る
@@ -22,7 +21,5 @@ ReactDOM.render(
     if (r == 1) return <p>こんにちは。</p>
     if (r == 2) return <p>朗らかな日ですね。</p>
   }
-)
-
 </script>
 
