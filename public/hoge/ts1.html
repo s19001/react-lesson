@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>hello-react</title>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  class TScore extends React.Component {
+    constructor (props) {
+      super(props) 
+      this.state = {
+        time: '',
+        conv: '',
+        score: ''
+      }
+    }
+    render () {
+      const doSubmit = e => this.doSubmit(e)
+      const doChange = e => this.doChange(e)
+      return (<form name="timescore" onSubmit={doSubmit}>
+        <label>タイム<br />
+          <input type='number' name='time'
+            ref={ (i) => { this.time = i } }
+            value={this.state.time}
+            onChange={doChange} />
+        </label><br />
+        <label>何秒台(10秒〜16秒)<br />
+          <input type='number' name='conv' min='10' max='16'
+            ref={ (i) => { this.conv = i } }
+            value={this.state.conv}
+            onChange={doChange} />
+        </label><br />
+        <input type='submit' value='送信' />
+      </form>)
+    }
+    doChange (e) {
+      const key = e.target.name
+      this.setState({
+        [key]: e.target.value
+      })
+    }
+    doSubmit (e) {
+      e.preventDefault()
+      if (!this.state.time) {
+        this.time.focus()
+        return
+      }
+      if (!this.state.conv) {
+        this.conv.focus()
+        return
+      }
+      window.alert(JSON.stringify(this.state))
+    }
+  }
+  ReactDOM.render(<div><TScore /></div>,
+    document.getElementById('root'))
+</script>
+

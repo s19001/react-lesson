@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>hello-react</title>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  class SelectForm extends React.Component {
+    constructor (props){
+      super(props)
+      this.state = {
+        items: props.items,
+        value: props.value
+      }
+    }
+    render () {
+      const options = this.state.items.map(i => {
+        return (<option key={i}
+          value={i}> {i}
+          </option>)
+      })
+      return (<div>
+        <form onSubmit={e => this.doSubmit(e)}>
+        <select 
+          value={this.state.value}
+          onChange={e => this.doChange(e)}>
+          {options}
+        </select><br />
+        <input type='submit' />
+        </form>
+      </div>)
+    }
+    doChange (e) {
+      this.setState({ value: e.target.value })
+    }
+    doDbmit (e) {
+      e.preventDefault()
+      window.alert(this.state.alue)
+    }
+  }
+  ReactDOM.render(
+    <SelectForm
+      items={['チョコ', '梅干し', 'ラムネ']}
+      value='ラムネ' />
+    document.getElementById('root')
+  )
+
+</script>
+
